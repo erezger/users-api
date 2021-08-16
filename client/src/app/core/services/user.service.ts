@@ -15,4 +15,19 @@ export class UserService {
     const route = 'users/all ';
     return this._commonHttpService.get(route);
   }
+  
+  public addNewUser(data): Observable<Array<User>> {
+    const route = 'users ';
+    return this._commonHttpService.post(route, data);
+  }
+  
+  public editUser(data): Observable<Array<User>> {
+    const route = 'users/' + data.id;
+    return this._commonHttpService.put(route, data);
+  }
+  
+  public deleteUser(id): Observable<Array<User>> {
+    const route = 'users/' + id;
+    return this._commonHttpService.delete(route);
+  }
 }

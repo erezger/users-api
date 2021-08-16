@@ -8,6 +8,7 @@ import {Store} from '@ngrx/store';
 import {RootStoreState} from '@app/root-store';
 import {Observable} from 'rxjs';
 import { UserStoreActions, UserStoreSelectors } from '@app/root-store/user-store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -43,8 +44,9 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private _userService: UserService,
-    private toastr: ToastrService,
-    private store$: Store<RootStoreState.State>
+    private _toasterService: ToastrService,
+    private router: Router,
+    private store$: Store<RootStoreState.State>,
   ) {
   }
 
@@ -65,9 +67,33 @@ export class UsersComponent implements OnInit {
     );
   }
 
-  rowClicked(data) {
-    this.userToEdit.next(data);
-    this.toggleRegisterUser = !this.toggleRegisterUser;
+  navigateToUser(){
+    this.router.navigate(['/users/user/', {mode:'New'}]);
+  }
+  
+  editClicked(data) {
+    this.router.navigate(['/users/user/' + data.id, {mode:'Edit', user: JSON.stringify(data)}]);
+  }
+  
+  viewClicked(data) {
+    this.router.navigate(['/users/user/' + data.id, {mode:'View', user: JSON.stringify(data)}]);
+  }
+
+  deleteClicked(obj) {
+    this._userService.deleteUser(obj.id)
+    .subscribe(() => {
+      this._toasterService.success('user deleted successfully!', 'Success!');
+      this.store$.dispatch(
+        new UserStoreActions.loadUsersRequestAction()
+      );
+      },
+      (err) => {
+        this._toasterService.error(err.message, 'Error!');
+        this.isLoading = false;
+      },
+      () => {
+        this.isLoading = false;
+      });
   }
 
 }

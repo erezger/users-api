@@ -9,6 +9,7 @@ import {NotFoundComponent} from '@app/modules/users/components/not-found/not-fou
 import {HeaderComponent} from '@app/modules/users/components/header/header.component';
 import { MasterComponent } from './components/master/master.component';
 import { UsersComponent } from './components/users/users.component';
+import { CreateUserComponent } from './components/users/create-user/create-user.component';
 // defining routes
 const routes: Routes = [
   {
@@ -16,6 +17,14 @@ const routes: Routes = [
       {
         path: '',
         component: UsersComponent,
+      },
+      {
+        path: 'user',
+        component: CreateUserComponent,
+      },
+      {
+        path: 'user/:id',
+        component: CreateUserComponent,
       },
     ]
   }
@@ -30,6 +39,7 @@ const routes: Routes = [
 export class UsersRoutingModule {
   static components = [
     UsersComponent,
+    CreateUserComponent,
     MasterComponent,
     DataTableComponent,
     NotFoundComponent,

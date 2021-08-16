@@ -3,9 +3,10 @@
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
       <button type="button" class="btn btn-sm btn-outline-secondary"
-              (click)="toggleRegisterUser = true; userToEdit.next();">Create User
+              (click)="navigateToUser()" >Create User
       </button>
     </div>
   </div>
 </div>
-<app-data-table [headers]="userHeaders" [data]="users" [disableRowClick]="true" (rowClicked)="rowClicked($event)"></app-data-table>
+<app-data-table [headers]="userHeaders" [data]="users" [disableRowClick]="true" (editClicked)="editClicked($event)" (deleteClicked)="deleteClicked($event)"
+(viewClicked)="viewClicked($event)" [rowActions]="{edit: true, view: true, delete: true}"></app-data-table>

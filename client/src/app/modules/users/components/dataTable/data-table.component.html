@@ -5,14 +5,29 @@
       <th *ngFor="let header of headers">
         {{header.text}}
       </th>
+      <th *ngIf="rowActions && rowActions.edit">
+        Actions
+      </th>
     </tr>
     </thead>
-    <tbody>
-    <tr class="tr-shadow" *ngFor="let item of data" (click)="disableRowClick ? null : rowClicked.emit(item)">
-      <td *ngFor="let header of headers">
-        {{item[header.property]}}
-      </td>
-    </tr>
-    </tbody>
+    <tbody *ngIf="rowActions">
+      <tr class="tr-shadow" *ngFor="let item of data">
+        <td *ngFor="let header of headers">
+          {{item[header.property]}}
+        </td>
+        <td *ngIf="rowActions">
+          <a *ngIf="rowActions.view" style="margin-right: 5px;" (click)="viewClicked.emit(item)">view</a>
+          <a *ngIf="rowActions.edit" style="margin-right: 5px;" (click)="editClicked.emit(item)">edit</a>
+          <a *ngIf="rowActions.delete" (click)="deleteClicked.emit(item)">delete</a>
+        </td>
+      </tr>
+      </tbody>
+      <tbody *ngIf="!rowActions">
+      <tr class="tr-shadow" *ngFor="let item of data" (click)="disableRowClick ? null : rowClicked.emit(item)">
+        <td *ngFor="let header of headers">
+          {{item[header.property]}}
+        </td>
+      </tr>
+      </tbody>
   </table>
 </div>

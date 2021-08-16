@@ -11,8 +11,12 @@ export class DataTableComponent implements OnInit {
   @Input() headers: TableHeaderModel[];
   @Input() data: any[];
   @Input() disableRowClick: boolean;
+  @Input() rowActions: any;
 
   @Output() rowClicked = new EventEmitter<any>();
+  @Output() editClicked = new EventEmitter<any>();
+  @Output() viewClicked = new EventEmitter<any>();
+  @Output() deleteClicked = new EventEmitter<any>();
 
   constructor() { }
 

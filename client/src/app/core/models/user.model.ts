@@ -2,6 +2,7 @@ import { BaseModel } from "./base.model";
 
 export class User extends BaseModel {
   public _id?: string;
+  public id?: string;
   public firstname: string;
   public username: string;
   public lastname: string;

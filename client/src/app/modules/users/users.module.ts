@@ -4,7 +4,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {UsersRoutingModule} from '@app/modules/users/users-routing.module';
 import {ToastrModule} from 'ngx-toastr';
 import {NgSelectModule} from '@ng-select/ng-select';

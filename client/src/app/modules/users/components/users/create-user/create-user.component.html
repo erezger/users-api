@@ -2,21 +2,21 @@
   <div class="row justify-content-between">
     <div class="col d-flex justify-content-between">
       <h2>{{title}}</h2>
-      <a class="close-icon" (click)="closeRegisterUser.emit(); createUserForm.reset()"></a>
+    <a class="close-icon" (click)="backToUsers()">Back</a>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <form class="form" [formGroup]="createUserForm" (ngSubmit)="registerNewUser()">
+      <form class="form" [formGroup]="createUserForm" (ngSubmit)="onSave()">
         <div class="row">
           <div class="col-auto">
             <div class="form__field">
-              <label class="form__label"> {{'First Name' | translate}} <span>*</span></label>
-              <input class="form__input" type="text" placeholder="" value="" formControlName="firstname">
+              <label class="form__label"> First Name <span>*</span></label>
+              <input class="form__input" type="text" placeholder="" value="" [readonly]="mode === 'View'" formControlName="firstName">
               <div class="error-messages">
-                <ng-container *ngFor="let error of errorMessages.firstname">
+                <ng-container *ngFor="let error of errorMessages.firstName">
                   <div class="error-message"
-                       *ngIf="createUserForm.get('firstname').hasError(error.type) && (createUserForm.get('firstname').dirty || createUserForm.get('firstname').touched)">
+                       *ngIf="createUserForm.get('firstName').hasError(error.type) && (createUserForm.get('firstName').dirty || createUserForm.get('firstName').touched)">
                     {{ error.message }}
                   </div>
                 </ng-container>
@@ -25,12 +25,12 @@
           </div>
           <div class="col-auto">
             <div class="form__field">
-              <label class="form__label"> {{'Last Name' | translate}} <span>*</span></label>
-              <input class="form__input" type="text" placeholder="" value="" formControlName="lastname">
+              <label class="form__label"> Last Name <span>*</span></label>
+              <input class="form__input" type="text" placeholder="" [readonly]="mode === 'View'" value="" formControlName="lastName">
               <div class="error-messages">
-                <ng-container *ngFor="let error of errorMessages.lastname">
+                <ng-container *ngFor="let error of errorMessages.lastName">
                   <div class="error-message"
-                       *ngIf="createUserForm.get('lastname').hasError(error.type) && (createUserForm.get('lastname').dirty || createUserForm.get('lastname').touched)">
+                       *ngIf="createUserForm.get('lastName').hasError(error.type) && (createUserForm.get('lastName').dirty || createUserForm.get('lastName').touched)">
                     {{ error.message }}
                   </div>
                 </ng-container>
@@ -39,22 +39,8 @@
           </div>
           <div class="col-auto">
             <div class="form__field">
-              <label class="form__label"> {{'User Name' | translate}} <span>*</span></label>
-              <input class="form__input" type="text" placeholder="" value="" formControlName="username">
-              <div class="error-messages">
-                <ng-container *ngFor="let error of errorMessages.username">
-                  <div class="error-message"
-                       *ngIf="createUserForm.get('username').hasError(error.type) && (createUserForm.get('username').dirty || createUserForm.get('username').touched)">
-                    {{ error.message }}
-                  </div>
-                </ng-container>
-              </div>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="form__field">
-              <label class="form__label"> {{'Email' | translate}} <span>*</span></label>
-              <input class="form__input" type="text" placeholder="" value="" formControlName="email">
+              <label class="form__label">Email <span>*</span></label>
+              <input class="form__input" type="text" placeholder="" [readonly]="mode === 'View'" value="" formControlName="email">
               <div class="error-messages">
                 <ng-container *ngFor="let error of errorMessages.email">
                   <div class="error-message"
@@ -67,29 +53,26 @@
           </div>
           <div class="col-auto">
             <div class="form__field">
-              <label class="form__label"> {{'Password' | translate}} <span>*</span></label>
-              <input class="form__input" type="password" placeholder="" value="" formControlName="password">
+              <label class="form__label">Gender <span>*</span></label>
+              <input class="form__input" type="text" placeholder="" [readonly]="mode === 'View'" value="" formControlName="gender">
               <div class="error-messages">
-                <ng-container *ngFor="let error of errorMessages.password">
+                <ng-container *ngFor="let error of errorMessages.gender">
                   <div class="error-message"
-                       *ngIf="createUserForm.get('password').hasError(error.type) && (createUserForm.get('password').dirty || createUserForm.get('password').touched)">
+                       *ngIf="createUserForm.get('gender').hasError(error.type) && (createUserForm.get('gender').dirty || createUserForm.get('gender').touched)">
                     {{ error.message }}
                   </div>
                 </ng-container>
               </div>
             </div>
           </div>
-
           <div class="col-auto">
             <div class="form__field">
-              <label class="form__label"> {{'Role' | translate}} <span>*</span></label>
-              <ng-select class="custom-select" formControlName="role">
-                <ng-option *ngFor="let role of roles" [value]="role.desc">{{role.desc}}</ng-option>
-              </ng-select>
+              <label class="form__label">Age <span>*</span></label>
+              <input class="form__input" type="number" placeholder="" [readonly]="mode === 'View'" value="" formControlName="age">
               <div class="error-messages">
-                <ng-container *ngFor="let error of errorMessages.role">
+                <ng-container *ngFor="let error of errorMessages.age">
                   <div class="error-message"
-                       *ngIf="createUserForm.get('role').hasError(error.type) && (createUserForm.get('role').dirty || createUserForm.get('role').touched)">
+                       *ngIf="createUserForm.get('age').hasError(error.type) && (createUserForm.get('age').dirty || createUserForm.get('age').touched)">
                     {{ error.message }}
                   </div>
                 </ng-container>
@@ -97,7 +80,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="mode !== 'View'">
           <div class="col">
             <button class="button form__submit" type="submit">
               <span class="button__text">Save</span>

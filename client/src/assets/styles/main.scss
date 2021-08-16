@@ -1,1 +1,115 @@
 
+.form {
+    min-width: 320px;
+  
+    .form__title {
+      color: #757575;
+    }
+  
+    .form__field {
+      padding: 20px 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .form__label {
+      font-weight: 700;
+      font-size: 1em;
+      color: #757575;
+    }
+  
+    .form__input {
+      border: none;
+      border-bottom: 2px solid #D1D1D4;
+      background: none;
+      padding: 10px;
+      font-weight: 700;
+      transition: .2s;
+    }
+  
+    .form__input:active,
+    .form__input:focus,
+    .form__input:hover {
+      outline: none;
+      border-bottom-color: #6A679E;
+    }
+  
+    textarea.form__input {
+      border: 2px solid #D1D1D4;
+      min-width: 300px;
+      min-height: 100px;
+    }
+  
+    .error-message {
+      color: red;
+      font-size: 12px;
+    }
+  
+    .form__submit {
+      background: #fff;
+      font-size: 14px;
+      margin-top: 15px;
+      padding: 8px 16px;
+      border-radius: 26px;
+      border: 1px solid #D4D3E8;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      color: #4C489D;
+      box-shadow: 0 2px 2px #5C5696;
+      cursor: pointer;
+      transition: .2s;
+    }
+  
+    ng-select {
+      min-width: 200px;
+      padding-bottom: 0;
+  
+      .ng-dropdown-panel.ng-select-bottom {
+        top: calc(100%);
+      }
+  
+      .ng-select-container {
+        min-height: 42px;
+  
+        &:after {
+          border-bottom: 2px solid rgb(209 209 212);
+        }
+      }
+    }
+  
+    .form__submit:active,
+    .form__submit:focus,
+    .form__submit:hover {
+      border-color: #6A679E;
+      outline: none;
+    }
+  }
+  
+  .view-mode {
+    .view__field {
+      padding: 20px 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .view__label {
+      font-weight: 700;
+      font-size: 1em;
+      color: #757575;
+    }
+  
+    .view__input {
+      border: none;
+      border-bottom: 2px solid #D1D1D4;
+      background: none;
+      padding: 10px;
+      font-weight: 700;
+      transition: .2s;
+    }
+  }
+
+  
