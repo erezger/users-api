@@ -1,0 +1,110 @@
+<div class="section">
+  <div class="row justify-content-between">
+    <div class="col d-flex justify-content-between">
+      <h2>{{title}}</h2>
+      <a class="close-icon" (click)="closeRegisterUser.emit(); createUserForm.reset()"></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <form class="form" [formGroup]="createUserForm" (ngSubmit)="registerNewUser()">
+        <div class="row">
+          <div class="col-auto">
+            <div class="form__field">
+              <label class="form__label"> {{'First Name' | translate}} <span>*</span></label>
+              <input class="form__input" type="text" placeholder="" value="" formControlName="firstname">
+              <div class="error-messages">
+                <ng-container *ngFor="let error of errorMessages.firstname">
+                  <div class="error-message"
+                       *ngIf="createUserForm.get('firstname').hasError(error.type) && (createUserForm.get('firstname').dirty || createUserForm.get('firstname').touched)">
+                    {{ error.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="form__field">
+              <label class="form__label"> {{'Last Name' | translate}} <span>*</span></label>
+              <input class="form__input" type="text" placeholder="" value="" formControlName="lastname">
+              <div class="error-messages">
+                <ng-container *ngFor="let error of errorMessages.lastname">
+                  <div class="error-message"
+                       *ngIf="createUserForm.get('lastname').hasError(error.type) && (createUserForm.get('lastname').dirty || createUserForm.get('lastname').touched)">
+                    {{ error.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="form__field">
+              <label class="form__label"> {{'User Name' | translate}} <span>*</span></label>
+              <input class="form__input" type="text" placeholder="" value="" formControlName="username">
+              <div class="error-messages">
+                <ng-container *ngFor="let error of errorMessages.username">
+                  <div class="error-message"
+                       *ngIf="createUserForm.get('username').hasError(error.type) && (createUserForm.get('username').dirty || createUserForm.get('username').touched)">
+                    {{ error.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="form__field">
+              <label class="form__label"> {{'Email' | translate}} <span>*</span></label>
+              <input class="form__input" type="text" placeholder="" value="" formControlName="email">
+              <div class="error-messages">
+                <ng-container *ngFor="let error of errorMessages.email">
+                  <div class="error-message"
+                       *ngIf="createUserForm.get('email').hasError(error.type) && (createUserForm.get('email').dirty || createUserForm.get('email').touched)">
+                    {{ error.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="form__field">
+              <label class="form__label"> {{'Password' | translate}} <span>*</span></label>
+              <input class="form__input" type="password" placeholder="" value="" formControlName="password">
+              <div class="error-messages">
+                <ng-container *ngFor="let error of errorMessages.password">
+                  <div class="error-message"
+                       *ngIf="createUserForm.get('password').hasError(error.type) && (createUserForm.get('password').dirty || createUserForm.get('password').touched)">
+                    {{ error.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-auto">
+            <div class="form__field">
+              <label class="form__label"> {{'Role' | translate}} <span>*</span></label>
+              <ng-select class="custom-select" formControlName="role">
+                <ng-option *ngFor="let role of roles" [value]="role.desc">{{role.desc}}</ng-option>
+              </ng-select>
+              <div class="error-messages">
+                <ng-container *ngFor="let error of errorMessages.role">
+                  <div class="error-message"
+                       *ngIf="createUserForm.get('role').hasError(error.type) && (createUserForm.get('role').dirty || createUserForm.get('role').touched)">
+                    {{ error.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button class="button form__submit" type="submit">
+              <span class="button__text">Save</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

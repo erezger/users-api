@@ -1,0 +1,27 @@
+table{
+  tr{
+    background: #fff;
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 12px 15px;
+    border-radius: 26px;
+    border: 1px solid #D4D3E8;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: #4C489D;
+    transition: 0.2s;
+    th,td{
+      border: none;
+      flex: 1;
+    }
+    th{
+      text-transform: uppercase;
+    }
+    td{
+      font-weight: 400;
+    }
+  }
+}

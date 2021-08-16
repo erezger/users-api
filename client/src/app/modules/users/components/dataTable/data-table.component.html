@@ -1,0 +1,18 @@
+<div class="table-responsive table-responsive-data2">
+  <table class="table table-data2">
+    <thead>
+    <tr>
+      <th *ngFor="let header of headers">
+        {{header.text}}
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="tr-shadow" *ngFor="let item of data" (click)="disableRowClick ? null : rowClicked.emit(item)">
+      <td *ngFor="let header of headers">
+        {{item[header.property]}}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
