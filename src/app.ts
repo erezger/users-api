@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import {UsersService} from './services/users.services';
 import {UsersController} from './controllers/users.controller';
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import {MONGO} from './constants/users-api.constants';
 import {handleErrors} from './middleware/error-handler.middleware';
 
@@ -30,9 +30,11 @@ class App {
   private setMongoConfig() {
     // @ts-ignore
     mongoose.Promise = global.Promise;
-    console.log('mongo url');
-    console.log(MONGO);
-    mongoose.connect(MONGO.url, MONGO.configuration);
+    mongoose.connect(MONGO.url, MONGO.configuration).then(r => {
+      console.log('mongoose is now connected');
+    }).catch(err =>{
+      console.log('error mongoose connection');
+    });
     mongoose.set("toJSON", {
       virtuals: true,
       transform: (_: any, converted: any) => {
