@@ -58,7 +58,7 @@ export class CreateUserComponent implements OnInit {
   ngOnInit(): void {
     
     this.route.params.subscribe(params => {
-      this.editUser = JSON.parse(params['user']);
+      this.editUser = params['user'] ? JSON.parse(params['user']) : {};
       this.mode = params['mode'];
     });
    
